@@ -1,6 +1,7 @@
 package com.ticketflow.dto;
 
 import com.ticketflow.enums.TicketPriority;
+import jakarta.validation.constraints.NotBlank;
 
-public record TicketRequest(String title, String description, TicketPriority priority ) {
+public record TicketRequest(@NotBlank String title, @NotBlank String description, TicketPriority priority ) {
 }

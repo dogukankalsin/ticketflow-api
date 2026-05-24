@@ -19,6 +19,7 @@ public class TicketMapper {
         String description = ticket.getDescription();
         TicketStatus status = ticket.getStatus();
         LocalDateTime createdAt = ticket.getCreatedAt();
+        LocalDateTime updatedAt = ticket.getUpdatedAt();
 
         TicketPriority priority = null;
         String createdBy = null;
@@ -34,7 +35,7 @@ public class TicketMapper {
             assignedTo = ticket.getAssignedTo() != null ? ticket.getAssignedTo().getUsername() : null;
         }
         return new TicketResponse(
-                id, title, description, status, priority, createdBy, assignedTo, createdAt
+                id, title, description, status, priority, createdBy, assignedTo, createdAt,updatedAt
         );
 
     }

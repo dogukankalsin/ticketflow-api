@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "tickets")
 @Getter
 @Setter
+
 public class Ticket {
 
     @Id
@@ -49,4 +50,14 @@ public class Ticket {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+
 }

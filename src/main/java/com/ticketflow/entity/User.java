@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Builder
 @Table(name="users")
+@EqualsAndHashCode(of = "id")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +28,11 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(,EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false ,updatable = false)
     private LocalDateTime createdAt;
 
     @PrePersist

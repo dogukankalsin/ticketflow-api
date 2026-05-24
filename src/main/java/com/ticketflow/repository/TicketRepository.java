@@ -1,6 +1,7 @@
 package com.ticketflow.repository;
 
 import com.ticketflow.entity.Ticket;
+import com.ticketflow.entity.User;
 import com.ticketflow.enums.TicketPriority;
 import com.ticketflow.enums.TicketStatus;
 import org.hibernate.query.criteria.JpaDerivedRoot;
@@ -11,7 +12,11 @@ import java.util.List;
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> findByCreatedById(Long userId);
 
-    List<Ticket> findByAssignedToId(Long userId);
+    List<Ticket> findByAssignedToIdAndStatusIn(
+            Long userId,
+            List<TicketStatus> statuses
+    );
+    List<Ticket> findByAssignedTo_Id(Long id);
 
     List<Ticket> findByStatus(TicketStatus status);
 
@@ -21,5 +26,5 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
     List<Ticket> findByStatusNot(TicketStatus status);
 
-    List<Ticket> findByAssignedToIdAndStatus(Long userId, TicketStatus status);
+
 }

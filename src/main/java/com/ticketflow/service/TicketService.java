@@ -3,6 +3,7 @@ package com.ticketflow.service;
 import com.ticketflow.dto.TicketRequest;
 import com.ticketflow.dto.TicketResponse;
 
+import com.ticketflow.enums.TicketPriority;
 import com.ticketflow.enums.TicketStatus;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,9 @@ public interface TicketService {
 
     List<TicketResponse> getMyTickets();
 
-    List<TicketResponse> getAssignedTickets();
+    List<TicketResponse> getMyAssignedTickets();
+
+    List<TicketResponse> getAssignedTickets(Long userId,List<TicketStatus> statuses);
 
     TicketResponse updateTicket(Long id, TicketRequest request);
 
@@ -28,6 +31,8 @@ public interface TicketService {
     TicketResponse assignTicket(Long ticketId, Long assigneeId);
 
     TicketResponse updateStatus(Long ticketId, TicketStatus status);
+
+    TicketResponse updatePriority(Long ticketId, TicketPriority priority);
 
     TicketResponse addWatcher(Long ticketId, Long watcherId);
 

@@ -30,20 +30,15 @@ public class JwtService {
     }
 
     public Long extractUserId(String token) {
+
         return Long.valueOf(extractAllClaims(token).getSubject());
     }
     public Role extractRole(String token) {
+
         return extractAllClaims(token).get("role", Role.class);
     }
 
 
-    public Long getCurrentUserId() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof Long) {
-            return (Long) principal;
-        }
-        throw new IllegalStateException("User ID not found in security context");
-    }
 
     public boolean isTokenValid(String token) {
         return !isTokenExpired(token);

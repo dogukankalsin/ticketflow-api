@@ -13,5 +13,6 @@ public record TicketResponse(
         TicketPriority priority,
         String createdBy,
         String assignedTo,
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
 ) {}
